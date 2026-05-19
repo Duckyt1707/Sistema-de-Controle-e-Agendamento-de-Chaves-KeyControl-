@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeyControl - Agendamento de Chaves</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>Sistema de Controle e Agendamento de Chaves</h1>
+      <p>Registre retiradas, entregas e acompanhe as movimentações mesmo offline.</p>
+    </header>
+
+    <section class="form-section">
+      <form id="keyForm" class="card" autocomplete="off">
+        <h2>Registrar movimentação</h2>
+
+        <div class="input-group">
+          <label for="sector">Setor</label>
+          <select id="sector" name="sector" required>
+            <option value="">Selecione o setor</option>
+            <option>TI</option>
+            <option>RH</option>
+            <option>Financeiro</option>
+            <option>Produção</option>
+            <option>Logística</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="room">Sala</label>
+          <select id="room" name="room" required>
+            <option value="">Selecione a sala</option>
+            <option>Lab 01</option>
+            <option>Lab 02</option>
+            <option>Reunião A</option>
+            <option>Reunião B</option>
+            <option>Auditório</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="responsible">Responsável</label>
+          <input id="responsible" name="responsible" type="text" placeholder="Nome completo" required />
+        </div>
+
+        <fieldset class="radio-group">
+          <legend>Turno</legend>
+          <label><input type="radio" name="shift" value="Manhã" required /> Manhã</label>
+          <label><input type="radio" name="shift" value="Tarde" /> Tarde</label>
+          <label><input type="radio" name="shift" value="Noite" /> Noite</label>
+        </fieldset>
+
+        <div class="grid-columns">
+          <div class="input-group">
+            <label for="pickupTime">Hora de Retirada</label>
+            <input id="pickupTime" name="pickupTime" type="time" required />
+          </div>
+          <div class="input-group">
+            <label for="deliveryTime">Hora de Entrega</label>
+            <input id="deliveryTime" name="deliveryTime" type="time" required />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </form>
+    </section>
+
+    <section class="records-section">
+      <div class="records-header">
+        <h2>Registros</h2>
+        <span id="recordCount">0 registros</span>
+      </div>
+      <div class="table-wrapper">
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Setor</th>
+              <th>Sala</th>
+              <th>Responsável</th>
+              <th>Turno</th>
+              <th>Retirada</th>
+              <th>Entrega</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="recordsBody"></tbody>
+        </table>
+      </div>
+      <p id="emptyMessage" class="empty-message">Nenhum registro encontrado. Cadastre uma movimentação para começar.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
